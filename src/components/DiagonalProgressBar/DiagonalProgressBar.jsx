@@ -7,53 +7,51 @@ gsap.registerPlugin(ScrollTrigger);
 const DiagonalProgressBar = ({
   color = '#e31635',
   width = 8,
-  trigger = '.cultural-highlights-section',
-  start = 'top 80%',
-  end = 'bottom 20%',
-  scrub = 1,
   className = '',
 }) => {
   const svgRef = useRef();
   const lineRef = useRef();
 
   useEffect(() => {
-    // Calculate the diagonal line length (viewport diagonal)
-    const lineLength = Math.sqrt(
-      window.innerWidth ** 2 + window.innerHeight ** 2
-    );
+    const line = lineRef.current;
+    const svg = svgRef.current;
 
-    // Diagonal line progress animation using strokeDasharray
-    gsap.fromTo(
-      lineRef.current,
-      {
-        strokeDasharray: `0 ${lineLength}`,
+    if (!line || !svg) return;
+
+    // Calculate diagonal length based on SVG dimensions
+    const rect = svg.getBoundingClientRect();
+    const diagonalLength = Math.sqrt(rect.width ** 2 + rect.height ** 2);
+
+    // Set up the stroke dash
+    gsap.set(line, {
+      strokeDasharray: diagonalLength,
+      strokeDashoffset: diagonalLength,
+    });
+
+    // Create scroll-based animation for the entire page
+    const scrollTrigger = ScrollTrigger.create({
+      trigger: document.body,
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: 1,
+      onUpdate: (self) => {
+        const progress = self.progress;
+        const offset = diagonalLength * (1 - progress);
+        gsap.set(line, { strokeDashoffset: offset });
       },
-      {
-        strokeDasharray: `${lineLength} 0`,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: trigger,
-          start: start,
-          end: end,
-          scrub: scrub,
-        },
-      }
-    );
+    });
 
     // Cleanup function
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => {
-        if (trigger.vars.trigger === trigger) {
-          trigger.kill();
-        }
-      });
+      scrollTrigger.kill();
     };
-  }, [color, width, trigger, start, end, scrub]);
+  }, [color, width]);
 
   return (
     <svg
       ref={svgRef}
       className={`absolute inset-0 w-full h-full pointer-events-none z-[5] ${className}`}
+      preserveAspectRatio="none"
     >
       <line
         ref={lineRef}
@@ -62,7 +60,7 @@ const DiagonalProgressBar = ({
         x2="100%"
         y2="0"
         stroke={color}
-        strokeWidth={8}
+        strokeWidth={width}
         fill="none"
         strokeLinecap="round"
         style={{
