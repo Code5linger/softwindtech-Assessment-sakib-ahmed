@@ -205,7 +205,7 @@ const CulturalHighlights = () => {
       {/* Content */}
       <div
         ref={contentRef}
-        className="relative z-10 max-w-7xl mx-auto px-14 py-7.5 bg-white/87"
+        className="relative z-10 max-w-7xl mx-auto px-14 py-7.5 xl:mx-3 lg:mx-3 md:mx-3 sm:mx-3 bg-white/87"
       >
         <h1
           ref={textRef}
@@ -223,7 +223,7 @@ const CulturalHighlights = () => {
           deliver lasting impact for our clients and communities.
         </p>
 
-        {/* Mini Cards */}
+        {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-full mt-[56px]">
           <CollaborationCard />
           <RocketCard />
