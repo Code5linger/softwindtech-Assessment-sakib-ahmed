@@ -126,6 +126,7 @@ const CulturalHighlights = () => {
   const textRef = useRef();
   const paragraphRef = useRef();
   const bgRef = useRef();
+  const contentRef = useRef();
 
   useEffect(() => {
     // Animate h1 by chars
@@ -158,13 +159,25 @@ const CulturalHighlights = () => {
 
     // Parallax effect for background
     gsap.to(bgRef.current, {
-      xPercent: -10, // Move right to left on scroll down
+      yPercent: -20, // Changed from xPercent to yPercent
       ease: 'none',
       scrollTrigger: {
-        trigger: bgRef.current,
+        trigger: '.cultural-highlights-section',
         start: 'top bottom',
         end: 'bottom top',
-        scrub: true, // Smooth scrubbing effect tied to scroll
+        scrub: true,
+      },
+    });
+
+    // Parallax effect for content (opposite direction)
+    gsap.to(contentRef.current, {
+      yPercent: 10, // Positive value for opposite movement
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.cultural-highlights-section',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
       },
     });
 
@@ -180,7 +193,7 @@ const CulturalHighlights = () => {
       {/* Animated Background Image Layer */}
       <div
         ref={bgRef}
-        className="absolute inset-0 bg-[url('assets/CulturalHighlightsBG.png')] bg-cover bg-center z-[-2] w-[150%] -left-[25%]"
+        className="absolute inset-0 bg-[url('assets/CulturalHighlightsBG.png')] bg-cover bg-center z-[-2] h-[150%] -top-[20%]"
       />
 
       {/* Gradient Overlay */}
@@ -190,7 +203,10 @@ const CulturalHighlights = () => {
       <DiagonalProgressBar />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-14 py-7.5 bg-white/87">
+      <div
+        ref={contentRef}
+        className="relative z-10 max-w-7xl mx-auto px-14 py-7.5 bg-white/87"
+      >
         <h1
           ref={textRef}
           className="font-semibold text-[30px] tracking-[0.05em] font-poppins antialiased"
