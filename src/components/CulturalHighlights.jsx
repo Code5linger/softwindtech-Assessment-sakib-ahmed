@@ -80,7 +80,7 @@ const CulturalHighlights = () => {
   }, []);
 
   return (
-    <section className="relative cultural-highlights-section grid place-content-center h-204.5 overflow-hidden">
+    <section className="relative cultural-highlights-section grid place-content-center h-204.5 overflow-hidden ">
       {/* Animated Background Image Layer */}
       <div
         ref={bgRef}
@@ -96,17 +96,17 @@ const CulturalHighlights = () => {
       {/* Content */}
       <div
         ref={contentRef}
-        className="relative z-10 max-w-7xl mx-auto px-14 py-7.5 xl:mx-3 lg:mx-3 md:mx-3 sm:mx-3 bg-white/87"
+        className="relative z-10 max-w-7xl  px-3 py-3 md:px-6 lg:px-9 xl:px-12 2xl:px-15 md:py-4 lg:py-5 xl:py-7 2xl:py-8 rounded-[3px] mx-3  bg-white/87"
       >
         <h1
           ref={textRef}
-          className="font-semibold text-[30px] tracking-[0.05em] font-poppins antialiased"
+          className="font-semibold text-[30px] tracking-[0.05em] font-poppins antialiased "
         >
           Cultural Highlights
         </h1>
         <p
           ref={paragraphRef}
-          className="font-poppins font-normal text-[14px] leading-[24px] text-gray-700 max-w-[872px] mt-[43px] antialiased"
+          className="font-poppins font-normal text-[14px] leading-[24px] text-gray-700 max-w-[872px] antialiased mt-3 md:mt-5 lg:mt-7 xl:mt-9 2xl:mt-11"
         >
           At Smart Lab Global, our values shape everything we do. We lead with
           integrity, innovate with purpose, and collaborate with empathy. These
@@ -115,7 +115,7 @@ const CulturalHighlights = () => {
         </p>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-full mt-[56px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-x-2 md:gap-x-5 lg:gap-x-10 xl:gap-x-15 2xl:gap-x-20  gap-y-2 md:gap-y-4 lg:gap-y-6 xl:gap-y-8 2xl:gap-y-10 w-full mt-3 md:mt-5 lg:mt-8 xl:mt-11 2xl:mt-14">
           <CollaborationCard />
           <RocketCard />
           <GlobalCard />
