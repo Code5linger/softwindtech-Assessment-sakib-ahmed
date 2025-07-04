@@ -87,10 +87,7 @@ const CulturalHighlights = () => {
         className="absolute inset-0 bg-[url('assets/CulturalHighlightsBG.png')] bg-cover bg-center z-[-2] h-[150%] -top-[20%]"
       />
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom_right,_rgb(255,_255,_255)_50%,_rgba(0,0,0,0)_50%)] z-0 blur-[.5px] antialiased" />
-
-      {/* Diagonal Red Line */}
+      {/* Diagonal Red Line whth WHite Overlay */}
       <DiagonalProgressBar />
 
       {/* Content */}
