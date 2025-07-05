@@ -1,12 +1,81 @@
-# React + Vite
+# Frontend Developer Assessment – Softwind Tech Ltd.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a submission for the Frontend Developer position at **Softwind Tech Ltd.**  
+The task was to replicate animation behavior from a reference site and apply it to a custom layout using React.
 
-Currently, two official plugins are available:
+## 🔗 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Vercel Deployment](https://softwindtech-assessment-sakib-git-37086a-codeslingers-projects.vercel.app/)
 
-## Expanding the ESLint configuration
+## 💻 GitHub Repository
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+[GitHub Repo](https://github.com/Code5linger/softwindtech-Assessment-sakib-ahmed)
+
+---
+
+## 📌 Tech Stack
+
+- **React**
+- **Tailwind CSS**
+- **GSAP (GreenSock Animation Platform)**
+- **Intersection Observer API**
+- **WebP Image Optimization**
+- **Responsive Design**
+
+---
+
+## ✅ Features Implemented
+
+- Accurate replication of reference animation behavior
+- Fully responsive layout and card alignment
+- Custom cursor with smooth hover animation
+- Scroll-triggered animations using GSAP
+- Lazy loading of heavy background image using Intersection Observer
+- Optimized `.webp` image (reduced from 1.19MB PNG to 46.8KB)
+- Dynamic progress bar on scroll
+- Fixed black line rendering issue on certain sections
+- Smooth scrolling transitions and performance improvements
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Code5linger/softwindtech-Assessment-sakib-ahmed.git
+cd softwindtech-Assessment-sakib-ahmed
+```
+
+### 2. Install dependencies
+
+```
+npm install
+```
+
+
+### 3. Run the development server
+
+```
+npm run dev
+```
+
+Open http://localhost:3000 to view it in the browser.
+
+### 📁 Folder Structure (Simplified)
+
+/
+├── components/
+│   └── Card.js
+├── pages/
+│   └── index.js
+├── public/
+│   └── assets/
+│       └── CulturalHighlightsBG.webp
+├── styles/
+│   └── globals.css
+└── ...
+
+### 📞 Contact
+Sheikh Sakib Ahmed
+📧 sakib.ahmed.1708@gmail.com
