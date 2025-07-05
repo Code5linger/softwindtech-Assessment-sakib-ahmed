@@ -60,9 +60,9 @@ const AnimatedCard = ({ children, className = '' }) => {
   };
 
   return (
-    <div className="relative z-10">
+    <div className="relative z-10 h-full">
       <div
-        className={`relative flex flex-shrink-0 items-center justify-center px-6 py-6 rounded-2xl transition-all duration-300 cursor-pointer bg-[#4D4D4F17] overflow-hidden ${className}`}
+        className={`relative flex flex-shrink-0 items-center justify-start px-6 py-6 rounded-2xl transition-all duration-300 cursor-pointer bg-[#4D4D4F17] overflow-hidden min-h-[120px] h-full ${className}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onMouseMove={handleMouseMove}

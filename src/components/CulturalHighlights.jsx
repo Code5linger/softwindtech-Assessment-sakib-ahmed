@@ -104,7 +104,7 @@ const CulturalHighlights = () => {
   }, []);
 
   return (
-    <section className="relative cultural-highlights-section grid place-content-center h-204.5 overflow-hidden ">
+    <section className="relative cultural-highlights-section flex items-center justify-center h-204.5 overflow-hidden ">
       {/* Animated Background Image Layer */}
       <div
         ref={bgRef}
@@ -116,10 +116,10 @@ const CulturalHighlights = () => {
       {/* Diagonal Red Line whth WHite Overlay */}
       <DiagonalProgressBar />
 
-      {/* Content */}
+      {/* Content*/}
       <div
         ref={contentRef}
-        className="relative z-10 max-w-7xl  px-3 py-3 md:px-6 lg:px-9 xl:px-12 2xl:px-15 md:py-4 lg:py-5 xl:py-7 2xl:py-8 rounded-[3px] mx-3  bg-white/87"
+        className="relative z-10 max-w-7xl px-3 py-3 md:px-6 lg:px-9 xl:px-12 2xl:px-15 md:py-4 lg:py-5 xl:py-7 2xl:py-8 rounded-[3px] mx-3 mb-17 md:mb-12 bg-white/87"
       >
         <h1
           ref={textRef}
@@ -139,7 +139,7 @@ const CulturalHighlights = () => {
 
         {/* Cards */}
         <div
-          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-2 md:gap-x-5 lg:gap-x-10 xl:gap-x-15 2xl:gap-x-20 gap-y-2 md:gap-y-4 lg:gap-y-6 xl:gap-y-8 2xl:gap-y-10 w-full mt-3 md:mt-5 lg:mt-8 xl:mt-11 2xl:mt-14 transition-all duration-500 ${
+          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-2 md:gap-x-5 lg:gap-x-10 xl:gap-x-15 2xl:gap-x-20 gap-y-2 md:gap-y-4 lg:gap-y-6 xl:gap-y-8 2xl:gap-y-10 w-full mt-3 md:mt-5 lg:mt-8 xl:mt-11 2xl:mt-14 transition-all duration-500 items-start grid-rows-auto ${
             showCards ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >

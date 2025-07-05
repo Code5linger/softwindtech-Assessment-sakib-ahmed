@@ -55,7 +55,7 @@ const DiagonalProgressBar = ({
     <>
       {/* White overlay with clip-path following the diagonal line */}
       <div
-        className="absolute inset-0 bg-white z-0 blur-[1px] antialiased"
+        className="absolute inset-0 bg-white z-0 antialiased"
         style={{
           clipPath: 'polygon(0% 0%, 100% 0%, 100% 10%, 0% 60%)',
         }}

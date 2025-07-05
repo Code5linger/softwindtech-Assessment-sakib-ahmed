@@ -3,6 +3,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import CulturalHighlights from './components/CulturalHighlights';
+import ScrollDownComponent from './components/ScrollDown';
+import ScrollUpComponent from './components/ScrollUp';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -29,13 +31,9 @@ function App() {
   return (
     <div id="smooth-wrapper">
       <div id="smooth-content">
-        <div className="grid place-content-center h-[50vh]">
-          <h1 className="text-4xl">Scroll Down</h1>
-        </div>
+        <ScrollDownComponent />
         <CulturalHighlights />
-        <div className="grid place-content-center h-[50vh]">
-          <h1 className="text-4xl">Scroll Up</h1>
-        </div>
+        <ScrollUpComponent />
       </div>
     </div>
   );
