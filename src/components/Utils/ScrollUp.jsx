@@ -1,4 +1,4 @@
-const ScrollUpComponent = () => {
+export default function ScrollDownComponent({ setIsActive }) {
   const ScrollUpIcon = () => (
     <div className="flex flex-col items-center animate-bounce">
       <div className="w-6 h-10 border-2 border-gray-800 rounded-full flex justify-center">
@@ -25,13 +25,21 @@ const ScrollUpComponent = () => {
   );
 
   return (
-    <div className="grid place-content-center h-[50vh] gap-4">
+    <div className="grid place-content-center h-[50vh] gap-8">
       <div className="flex justify-center">
         <ScrollUpIcon />
       </div>
-      <h1 className="text-4xl text-center">Please Scroll Up</h1>
+      <h1
+        onMouseOver={() => {
+          setIsActive(true);
+        }}
+        onMouseLeave={() => {
+          setIsActive(false);
+        }}
+        className="text-4xl text-center text-black z-50"
+      >
+        Please Scroll Up
+      </h1>
     </div>
   );
-};
-
-export default ScrollUpComponent;
+}

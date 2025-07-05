@@ -1,4 +1,4 @@
-const ScrollDownComponent = () => {
+export default function ScrollDownComponent({ setIsActive }) {
   const ScrollDownIcon = () => (
     <div className="flex flex-col items-center animate-bounce">
       <div className="w-6 h-10 border-2 border-gray-800 rounded-full flex justify-center">
@@ -26,12 +26,20 @@ const ScrollDownComponent = () => {
 
   return (
     <div className="grid place-content-center h-[50vh] gap-12">
-      <h1 className="text-4xl text-center">Please Scroll Down</h1>
+      <h1
+        onMouseOver={() => {
+          setIsActive(true);
+        }}
+        onMouseLeave={() => {
+          setIsActive(false);
+        }}
+        className="text-4xl text-center text-black z-50"
+      >
+        Please Scroll Down
+      </h1>
       <div className="flex justify-center">
         <ScrollDownIcon />
       </div>
     </div>
   );
-};
-
-export default ScrollDownComponent;
+}

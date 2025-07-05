@@ -9,6 +9,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef, useState } from 'react';
 import DiagonalProgressBar from './DiagonalProgressBar/DiagonalProgressBar';
+import GradientCursor from './Cursor/GradientCursor';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(window.SplitText);
@@ -16,6 +17,7 @@ gsap.registerPlugin(window.SplitText);
 const CulturalHighlights = () => {
   const [showCards, setShowCards] = useState(false);
   const [shouldLoad, setShouldLoad] = useState(false);
+  // const [isActive, setIsActive] = useState(false);
 
   const textRef = useRef();
   const paragraphRef = useRef();
@@ -104,7 +106,7 @@ const CulturalHighlights = () => {
   }, []);
 
   return (
-    <section className="relative cultural-highlights-section flex items-center justify-center h-204.5 overflow-hidden ">
+    <section className="relative cultural-highlights-section flex items-center justify-center h-204.5 overflow-hidden border-y-1 border-white">
       {/* Animated Background Image Layer */}
       <div
         ref={bgRef}
@@ -144,6 +146,7 @@ const CulturalHighlights = () => {
           }`}
         >
           <CollaborationCard />
+
           <RocketCard />
           <GlobalCard />
           <UpskillingCard />

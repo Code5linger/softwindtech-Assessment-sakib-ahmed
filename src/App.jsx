@@ -1,40 +1,26 @@
-import { useEffect } from 'react';
+import React, { useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import CulturalHighlights from './components/CulturalHighlights';
-import ScrollDownComponent from './components/ScrollDown';
-import ScrollUpComponent from './components/ScrollUp';
+import ScrollDownComponent from './components/Utils/ScrollDown';
+import ScrollUpComponent from './components/Utils/ScrollUp';
+import GradientCursor from './components/Cursor/GradientCursor';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 function App() {
-  useEffect(() => {
-    // Create ScrollSmoother instance
-    const smoother = ScrollSmoother.create({
-      wrapper: '#smooth-wrapper',
-      content: '#smooth-content',
-      smooth: 1.5,
-      effects: true,
-      normalizeScroll: true,
-      ignoreMobileResize: true,
-      preventDefault: true,
-    });
-
-    // Cleanup function
-    return () => {
-      smoother.kill();
-    };
-  }, []);
+  const [isActive, setIsActive] = useState(false);
 
   return (
     <div id="smooth-wrapper">
       <div id="smooth-content">
-        <ScrollDownComponent />
+        <ScrollDownComponent setIsActive={setIsActive} />
         <CulturalHighlights />
-        <ScrollUpComponent />
+        <ScrollUpComponent setIsActive={setIsActive} />
       </div>
+      <GradientCursor isActive={isActive} />
     </div>
   );
 }
