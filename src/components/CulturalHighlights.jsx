@@ -7,13 +7,16 @@ import CollaborationCard from './Cards/CollaborationCard';
 // GSAP
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import DiagonalProgressBar from './DiagonalProgressBar/DiagonalProgressBar';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(window.SplitText);
 
 const CulturalHighlights = () => {
+  const [showCards, setShowCards] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
   const textRef = useRef();
   const paragraphRef = useRef();
   const bgRef = useRef();
@@ -72,10 +75,31 @@ const CulturalHighlights = () => {
       },
     });
 
+    const timer = setTimeout(() => {
+      setShowCards(true);
+    }, 2500);
+
+    // Image lazy loading
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 } // Trigger when 10% visible
+    );
+
+    if (bgRef.current) {
+      observer.observe(bgRef.current);
+    }
+
     return () => {
       split.revert();
       paragraphSplit.revert();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      observer.disconnect();
+      clearTimeout(timer);
     };
   }, []);
 
@@ -84,7 +108,9 @@ const CulturalHighlights = () => {
       {/* Animated Background Image Layer */}
       <div
         ref={bgRef}
-        className="absolute inset-0 bg-[url('assets/CulturalHighlightsBG.png')] bg-cover bg-center z-[-2] h-[150%] -top-[20%]"
+        className={`absolute inset-0 bg-[url('assets/CulturalHighlightsBG.webp')] bg-cover bg-center z-[-2] h-[150%] -top-[20%] ${
+          shouldLoad ? "bg-[url('assets/CulturalHighlightsBG.webp')]" : ''
+        }`}
       />
 
       {/* Diagonal Red Line whth WHite Overlay */}
@@ -97,13 +123,13 @@ const CulturalHighlights = () => {
       >
         <h1
           ref={textRef}
-          className="font-semibold text-[30px] tracking-[0.05em] font-poppins antialiased "
+          className="font-semibold text-[30px] tracking-[0.05em] font-poppins antialiased cursor-default"
         >
           Cultural Highlights
         </h1>
         <p
           ref={paragraphRef}
-          className="font-poppins font-normal text-[14px] leading-[24px] text-gray-700 max-w-[872px] antialiased mt-3 md:mt-5 lg:mt-7 xl:mt-9 2xl:mt-11"
+          className="font-poppins font-normal text-[14px] leading-[24px] text-gray-700 max-w-[872px] antialiased mt-3 md:mt-5 lg:mt-7 xl:mt-9 2xl:mt-11 cursor-default"
         >
           At Smart Lab Global, our values shape everything we do. We lead with
           integrity, innovate with purpose, and collaborate with empathy. These
@@ -112,7 +138,11 @@ const CulturalHighlights = () => {
         </p>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-x-2 md:gap-x-5 lg:gap-x-10 xl:gap-x-15 2xl:gap-x-20  gap-y-2 md:gap-y-4 lg:gap-y-6 xl:gap-y-8 2xl:gap-y-10 w-full mt-3 md:mt-5 lg:mt-8 xl:mt-11 2xl:mt-14">
+        <div
+          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-2 md:gap-x-5 lg:gap-x-10 xl:gap-x-15 2xl:gap-x-20 gap-y-2 md:gap-y-4 lg:gap-y-6 xl:gap-y-8 2xl:gap-y-10 w-full mt-3 md:mt-5 lg:mt-8 xl:mt-11 2xl:mt-14 transition-all duration-500 ${
+            showCards ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+        >
           <CollaborationCard />
           <RocketCard />
           <GlobalCard />
